@@ -1,0 +1,43 @@
+1.
+a.
+
+var people = ['Vivian', 'Ava', 'Josh', 'Patrick', 'Mike'];
+
+b. 
+
+people.push('Mary');
+
+c.
+
+people.findIndex(person => {
+  return person === 'Josh';
+});
+
+d. 
+
+function findPerson(arr) {
+  return arr.find(person => person === 'Emily');
+}
+
+findPerson(['Vivian', 'Ava', 'Josh', 'Patrick', 'Mike']);
+
+e.
+
+people.splice(1, 0, 'Melissa');
+
+f.
+
+people.splice(4, 1);
+
+
+2. Another real-world example that can be modeled using a data structure would be a teacher keeping track of her student's grades on tests. This would have to be modeled using an array of  student objects, each object containing name and grade arrays.
+
+3. The different methods used would be:
+
+  addStudent(name)
+  removeStudent(name)
+
+  addGradeToStudent(name, grade)
+  removeGradeFromStudent(name, grade)
+
+  findStudentGrades(name)	
