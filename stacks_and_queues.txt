@@ -1,0 +1,59 @@
+1. The main difference between stacks and queues is how elements are removed from them. A stack is a LIFO (last in, first out) data structure and acts much like a stack of plates where the last plate you put on top of the pile is removed first. A queue is a FIFO (first in, first out) data structure which can be compared to a line at a store, the first person to be helped is the first person to leave.
+
+2. Both stacks and queues are linear data structures and are both flexible in their sizes. You are never able to access the middle of stacks and queues and you must work from either the beginning or end point with both of them.
+
+3. For the UNDO function, you would need to use a stack data structure because the last item you typed would need to be the first one removed. For the REDO function, you would need to use a queue data structure so that the first element added was also the first removed.
+
+
+1.
+
+function reverse(string) {
+	let reversed = [];
+  	let stringArray = string.split('');
+		for (i = 0; i < string.length; i ++) {
+  		reversed.unshift(stringArray[i]);
+  }
+  	return reversed;
+  }
+  
+console.log(reverse('kerry'));
+
+2. 
+
+class Stack {
+    constructor() {
+     this.pop = function(queue) {
+       var newQueue = [];
+       var removedItem = [];
+       
+       for (var i = 0; i < queue.length; i ++) {
+         if (i === queue.length -1) {
+           removedItem.push(queue[i]);
+       } else {
+           newQueue.push(queue[i]);
+         }
+       }
+       
+       return removedItem;   
+       
+     }
+   }
+}
+
+var stack = new Stack();
+console.log(stack.pop('kerry'));
+
+3. 
+
+var Queue = function() {
+  this.collection = [];
+}
+
+
+Queue.prototype.enqueue = function(element){
+  this.collection.push(element);
+}
+
+Queue.prototype.dequeue = function(element){
+  Queue = this.collection.shift(); 
+}
