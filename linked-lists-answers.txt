@@ -1,0 +1,70 @@
+1. Pros/ Cons of using linked lists instead of arrays:
+
+   1. Linked lists sizes are dynamic, while arrays are fixed
+   2. Linked lists have efficient insertion and deletions, while arrays are inefficient
+   3. Linked lists have no random access, meaning they can only be accessed in sequential order starting from the beginning, or head. Arrays have random access through indexing.
+   4. Sequential access is faster for arrays since elements are stored in contiguous memory, while linked list elements are stored randomly in memory.
+   5. Because arrays store elements in contigous memory and the sizes of arrays are fixed, this may result in a lot of wasted memory. Since linked list elements are stored randomly in memory and the size is dynamic, they leave no wasted memory space.
+
+2. A real world example of a linked list would be a building with no elevators, only stairs. You cannot be taken to a specific floor like you would be in an elevator, you can only go from one floor to the next, with the first floor being the head and the top floor being the tail.
+
+
+1. The problem with the original code is that there is nothing looping through the list to get to the next element. I added a while loop to the code that tells it to continue looping through as long as the next element does not equal null. When the while loop finishes, when the next element is equal to null, the new node can be inserted at the end.
+
+FUNCTION push(element)
+	CREATE node
+		SET node.value TO element
+		SET node.next TO null
+
+	IF the head node does not exist
+ 		THEN SET head to node
+	ELSE
+ 		SET current to head
+		WHILE current.next is not equal to null
+			SET current to current.next
+		END WHILE	
+ 		SET current.next to node
+	END IF
+END FUNCTION
+
+2. 
+
+  pushDeduplicated(element) {
+    let node = new Node();
+    node.value = element;
+    node.next = null;
+    if (this.head === null) {
+      this.head = node;
+    } else {
+      let current = this.head;
+      while (current.next !== null) {
+        if (current.value === element) {
+          return;
+        }
+        current = current.next;
+      }
+      current.next = node;
+    }
+  }
+
+  removeDuplicates() {
+    let deduplicatedList = new LinkedList();
+    let current = this.head;
+    while (current) {
+      deduplicatedList.pushDeduplicated(current.value);
+      current = current.next;
+    }
+    return deduplicatedList;
+  }
+
+3.
+
+reverse() {
+    let reversedList = new LinkedList();
+    let current = this.head;
+    while (current) {
+      reversedList.prepend(current.value);
+      current = current.next;
+    }
+    return reversedList;
+  }
