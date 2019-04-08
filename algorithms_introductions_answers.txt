@@ -1,0 +1,43 @@
+1.
+
+FUNCTION makeCoffee (coffee, cup)
+	ADD coffee to coffee machine
+	ADD water to coffee machine
+	START coffee machine
+	WHILE (coffee is brewing)
+		IF (likes sugar && milk)
+			ADD sugar and milk to cup
+		ELSE do not add sugar or milk
+		END IF
+	END WHILE
+	ADD coffee to cup
+END FUNCTION 
+
+
+FUNCTION washDishes 
+	ADD water to sink
+	ADD soap to water
+	WHILE (dishes are not equal to null)
+		WASH dishes
+		PLACE dishes on drying rack
+	END WHILE
+END FUNCTION
+
+FUNCTION heatUpFood 
+	TAKE food out of fridge
+	REMOVE cover from food container
+	PLACE food in microwave
+	FOR each 1/4 pound of food
+		microwave for 1 minute
+	END FOR
+END FUNCTION
+
+2. 
+
+Amazon's "recommendations" algorithm - Amazon invented the recommendations algorithm to personalize their customer's page based off of what their buying habits are. Since they came out with this about two decades ago, so many companies have adapted it and made their own implementations of it.
+
+Uber's algorithm that matches driver with rider - these two companies disrupted the taxi industry with their apps and driver to rider matching functionality/location tracking. The ease of use of their apps have made traditional taxis a thing of the past. 
+
+Google Maps algorithm that allows you to easily get directions from one location to the other - There is nothing out there equivalent to Google Maps that allow you to calculate how to get somewhere using all methods of transportation - walking, biking, driving, bus/train, plane. There are so many websites that use Google Maps and it makes getting around so much easier.
+
+3. An efficient algorithm is one that has clear steps and gets you to the end solution as quickly as possible. Efficient algorithms use effective methods to solve a problem and use as little working memory as possible. An inefficient algorithm is the exact opposite; the steps to the end solution are unclear, it takes more time than is needed to get to the solution, and also uses more space than what is needed.  
