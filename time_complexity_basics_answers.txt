@@ -1,0 +1,25 @@
+1. Time complexity is expressed as a function that is used to estimate the efficiency of an algorithm. An algorithm, in simple terms is a set of instructions to complete a task in the shortest amount of time possible, and time complexity is a measure of the time it takes an algorithm to execute.
+
+2. Runtime is essentially the same as time complexity, it refers to the time it takes an algorithm to execute.
+
+3. Runtime is calculated using Big O notation. With the Big O notation, the runtime is determined by how many instructions the algorithm has to execute as a function of the size of its input.
+
+4. Most efficient to least efficient:
+
+	1. O(1) - Constant Growth Rate
+	2. O(log n) - Logarithmic Growth Rate
+	3. O(n) - Linear Growth Rate
+	4. O(n log n) - Log-Linear Growth Rate
+	5. O(n^2) - Quadratic Growth Rate
+	6. O(2^n) - Exponential Growth Rate
+	7. O(n!) - Factorial
+
+5. An example for exponential growth would be a cell that splits itself in two every minute. After 2 minutes pass, there would be 4 cells in total, after 4 minutes 16 cells, after 8 minutes 256 cells and so on.
+
+6. O(n)
+
+7. O(n^2)
+
+8. O(2^n)
+
+9. linear search
