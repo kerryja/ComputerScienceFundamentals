@@ -1,0 +1,48 @@
+1. A recursive function is one that calls itself again and again until a specific condition is met, while an iterative function contains a block of code that loops and repeats until a condition is met.
+
+2. 
+
+1. Factorial 
+2. Fibonacci
+3. Binary Tree
+4. Merge Sort
+5. Quick Sort
+
+3. Both recursive and iterative code have their tradeoffs and its important to know when to use each type. Recursive code typically runs slower but it is usually easier to implement than iterative code. If performance if the top priority, then writing iterative code is the way to go, but if readability is the top concern, then recursion should be used. 
+
+4. In the recursive solutions, all three of them use if/else statements. They also all start with a one-line base case. 
+In the iterative solutions, all three of them use some form of a for loop. With the recursive solutions all of them require multiple return statements while iteration ones just require one return statement each. For these specific examples, it looks like it is easier to implement them using iteration, as it is more straightforward. 
+
+5. 
+
+var count = 0;
+
+function countItems(arr){
+  if(!Array.isArray(arr)){
+     count++;
+  } else {
+    for(var i = 0; i < arr.length; i++){
+      countItems(arr[i]);
+    }
+  }
+  return count;
+}
+
+console.log(countItems([[[34, 56, 23, 45], [67, 32, 21], 78, 43]]));
+
+6.
+
+function isPalendrome(word) {
+  let length = word.length;
+  if (length <= 1) {
+    return true;
+  } else if (word.charAt(0) === word.charAt(length - 1)) {
+      return isPalendrome(word.slice(1, length - 1));
+  }
+  return false;
+};
+
+console.log(isPalendrome('racecar');
+console.log(isPalendrome('kerry');
+
+7. This is an example of recursion because Google is appearing to be repeating itself, displaying a link to "recursion" which leads you back to the same page you were previously on. It will continue repeating these steps until you cancel and search for something else. 
