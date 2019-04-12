@@ -1,0 +1,51 @@
+1. A real life example that uses linear search would be trying to find your Uber in line of cars. Since you know the driver's license plate number from the app, you search each car until it matches the one in the app. 
+
+2. A real life example that uses binary search is the number guessing game, where one person thinks of a number between 1 and 100 and the other person tries to guess. With each guess, the the person thinking of the number tells the guesser if they are too high or too low, and this continues until the correct number is guessed.
+
+3. 7 iterations
+
+4. 3 iterations
+
+5. With an unsorted collection of a million items, I would choose linear search because it is useless to use binary search on an unsorted collection. You would most likely find the item sooner using linear search for the unsorted collection, even if it contains a large number of items.
+
+6. With a sorted collection, you would use binary search because it will cut the amount you need to search through in half with each iteration, and your chances of finding the number quickly are much higher than if you were to use linear search.
+
+
+1. 
+
+function binarySearchDictionary(wordList, word) {
+  var start = 0;
+  var end = wordList.length - 1;
+
+  while (start <= end) {
+    var middle = Math.round((start + end) / 2);
+    if (wordList[middle] > word) {
+      var end = middle - 1;
+    } else if (wordList[middle] < word) {
+      var start = middle + 1;
+    } else {
+      return middle;
+    }
+  }
+  return "Word not found";
+}
+
+binarySearchDictionary = (["albany", "albarello", "albarium", "albata", "albategnius", "albatross", "albay", "albedo", "albedometer"], 'albatross);
+
+2.
+
+function findGoldfish(fishInTank, whiteGoldfish) {
+    var winningGoldfish = null;
+    var chosenGoldfish;
+
+    for(i = 0; i < fishInTank.length; i ++) {
+        chosenGoldfish = fishInTank[i];
+        if (chosenGoldfish === whiteGoldfish ) {
+            winningGoldfish = i;
+            break;
+        }
+    }
+    return winningGoldfish;
+}
+
+findGoldfish(['clown fish', 'molly', 'tetra', 'white goldfish', 'guppy', 'fighting fish'], 'white goldfish');
