@@ -32,23 +32,7 @@ FUNCTION findValue (root, value)
 END FUNCTION
 
 
-function findValue(root, value) {
-  if (root === null) {
-    return false;
-  } else {
-    let current = root;
-    while (current) {
-      if (current.value === value) {
-        return true;
-      } else if (value < current.value) {
-        let current = current.left;
-      } else if (value > current.value) {
-        let current = current.right;
-      }
-      return false;
-    }
-  }
-}
+
 
 
 2.
@@ -71,22 +55,88 @@ FUNCTION distanceBetweenNodes(n1, n2)
 END FUNCTION
 
 
-function distanceBetweenNodes(n1, n2) {
-  if (n1 === null) {
-    return undefined;
-  } else {
-    let current = n1;
-    while (current) {
-      if ((current.value = n2)) {
-        return 0;
-      } else if (n2 < current.value) {
-        return 1 + distanceBetweenNodes(current.left, n2);
-      } else if (n2 > current.value) {
-        return 1 + distanceBetweenNodes(current.right, n2);
-      }
+Answers to 1. and 2. in JS:
+
+class Node {
+    constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
     }
-  }
 }
+
+class BinarySearchTree {
+    constructor() {
+        this.root = null;
+    }
+    insert(value) {
+        var newNode = new Node(value);
+        if (this.root === null) {
+            this.root === newNode;
+            return this;
+        } else { 
+            var current = this.root;
+            while (current) {
+                if (value === current.value) return undefined;
+                if (value < current.value) {
+                    if(!current.left) {
+                        current.left = newNode;
+                        return this;
+                    } else {
+                        current = current.left;
+                    }
+                } else if (value > current.value) {
+                    if (!current.right) {
+                        currrent.right = newNode;
+                        return this;
+                    } else {
+                        current = current.right;
+                    }
+                }
+            }
+        }
+
+    }
+    contains(value) {
+        if (this.root === null) {
+            return false;
+        } else {
+            let current = this.root;
+            while (current) {
+                if (current.value === value) {
+                    return true;
+                } else if (value < current.value) {
+                    current = current.left;
+                } else if (value > current.value) {
+                    current = current.right;
+                }
+            }
+            return false;
+        }
+    }
+    distanceBetweenNodes(n1, n2) {
+        if (n1 === null) {
+          return undefined;
+        } else {
+          let current = n1;
+          while (current) {
+            if (current.value === n2) {
+              return 0;
+            } else if (n2 < current.value) {
+              return 1 + distanceBetweenNodes(current.left, n2);
+            } else if (n2 > current.value) {
+              return 1 + distanceBetweenNodes(current.right, n2);
+            }
+          }
+        }
+    }
+}
+
+var tree = new BinarySearchTree();
+tree.root = new Node(10);
+tree.root.right = new Node(15);
+tree.root.left = new Node(7);
+tree.root.left.right = new Node(9);
 
 
 
