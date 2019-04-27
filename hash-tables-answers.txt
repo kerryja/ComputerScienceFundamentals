@@ -1,0 +1,156 @@
+1. A hash table is a type of data structure that stores the data in the form of key-value pairs, very similar to JS objects.
+
+2. Hashing is the conversion of a key of any data type to a numerical index. Since arrays are strictly numerically indexed the key part of the key-value pair needs to be converted into a number if it isn't already. With a hashing function, they key is converted to a fixed-length number called a hash code. 
+
+3. A hash table stores data by first converting the key to a hash code and then using that code to find the index where the value will be stored. There are many ways to avoid collisons (making sure data is not overwritten if the same index is used) and one of the methods is separate chaining, where multiple arrays are nested at the same index.
+
+4. Hash tables are very similar to objects but it depends on the nature of your data whether you should use a hash table or an object to store it. Objects are best for storing a fixed number of keys/values while hash tables are best for storing a variable number of values, each with a specific identifier. Hash tables should be used to store collections of similar data, while objects can hold different types of data bundled together. All of the different collections of data in a hash table are linked to one identifier, while an object can have multiple key/value pairs in the same collection.
+
+5.
+
+A list of pets and their unique names - object
+
+The name, age, and the birthday of your best friend - hash table
+
+The name and location of every company in a given city - object
+
+All of the books checked out from a library by a particular individual - hash table
+
+The primary and secondary phone numbers for a contact - hash table
+
+
+1. 
+
+class HashTable {
+  constructor(size = 61) {
+    this.keyMap = new Array(size);
+  }
+  hash(key) {
+      let index = key % this.keyMap.length;
+      return index;
+  }
+
+  set(key, value) {
+    let index = this.hash(key);
+    if(!this.keyMap[index]) {
+      this.keyMap[index] = [];
+    }
+    this.keyMap[index].push([key, value]);
+  }
+  get(key) {
+    let index = this.hash(key);
+    if(!this.keyMap[index]) 
+      return undefined;
+    for(let i = 0; i < this.keyMap[index].length; i ++) {
+      if(this.keyMap[index][i][0] === key) {
+        return this.keyMap[index][i][1];
+      }  
+    }
+    return undefined;
+  }
+}
+
+
+class Customer {
+  constructor(name, address, phone) {
+    this.name = name;
+    this.address = address;
+    this.phone = phone;
+  }
+}
+
+
+2.
+
+class HashTable {
+  constructor(size = 61) {
+    this.keyMap = new Array(size);
+  }
+  hash(key) {
+      let index = key % this.keyMap.length;
+      return index;
+  }
+
+  set(key, value) {
+    let index = this.hash(key);
+    if(!this.keyMap[index]) {
+      this.keyMap[index] = [];
+    }
+    this.keyMap[index].push([key, value]);
+  }
+  get(key) {
+    let index = this.hash(key);
+    if(!this.keyMap[index]) 
+      return undefined;
+    for(let i = 0; i < this.keyMap[index].length; i ++) {
+      if(this.keyMap[index][i][0] === key) {
+        return this.keyMap[index][i][1];
+      }  
+    }
+    return undefined;
+  }
+}
+
+class StoreItem {
+  constructor(item, quantity) {
+    this.item = item;
+    this.quantity = quantity;
+  }
+  getCode() {
+    let total = 0;
+    let prime = 31;
+    for (let i = 0; i < Math.min(this.item.length, 100); i ++) {
+      let value = this.item.charCodeAt(i) - 96
+      total = (total * prime + value) % this.item.length;
+    }
+    return total;
+  }
+}
+
+3.
+
+class HashTable {
+  constructor(size = 61) {
+    this.keyMap = new Array(size);
+  }
+  hash(key) {
+      let index = key % this.keyMap.length;
+      return index;
+  }
+
+  set(key, value) {
+    let index = this.hash(key);
+    if(!this.keyMap[index]) {
+      this.keyMap[index] = [];
+    }
+    this.keyMap[index].push([key, value]);
+  }
+  get(key) {
+    let index = this.hash(key);
+    if(!this.keyMap[index]) 
+      return undefined;
+    for(let i = 0; i < this.keyMap[index].length; i ++) {
+      if(this.keyMap[index][i][0] === key) {
+        return this.keyMap[index][i][1];
+      }  
+    }
+    return undefined;
+  }
+}
+
+class Publication {
+  constructor(publisher, publicationDate) {
+    this.unhashedKey = publisher + publicationDate;
+    this.publisher = publisher;
+    this.publicationDate = publicationDate;
+  }
+  getCode() {
+    let total = 0;
+    let prime = 31;
+    for (let i = 0; i < Math.min(this.unhashedKey.length, 100); i ++) {
+      let value = this.unhashedKey.charCodeAt(i) - 96
+      total = (total * prime + value) % this.unhashedKey.length;
+    }
+    return total;
+  }
+}
