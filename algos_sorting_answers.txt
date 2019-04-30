@@ -1,0 +1,50 @@
+1.
+
+function bubbleSort(collection) {
+    for (var i = collection.length; i > 0; i--) {
+        noSwaps = true;
+        for (var j = 0; j < i - 1; j++) {
+            if(collection[j] > collection[j + 1]) {
+                var temp = collection[j];
+                collection[j] = collection[j + 1];
+                collection[j + 1] = temp;
+                noSwaps = false;
+            }
+        }
+        if (noSwaps) break;
+    }
+    return collection;
+}
+
+bubbleSort([34, 65, 12, 2, 45, 1, 78, 1]);
+
+2. 
+
+
+FUNCTION pivot(arr, start = 0, end = arr.length -1)
+	SET swap to (arr, idx1, idx2) => {
+		[arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+	SET pivot to arr[start];
+	SET swapIdx = start;
+
+	FOR i = start + 1; i is less than or equal to end, i++
+		IF pivot is greater than arr[i]
+			THEN swapIdx++;
+			CALL swap(arr, swapIdx, i)
+		END IF
+	END FOR
+	CALL swap(arr, start, swapIdx)
+	RETURN swpIdx;
+
+FUNCTION quickSort(arr, left = 0, right = arr.length -1)
+	IF left is greater than right
+		SET pivotIndex to pivot(arr, left, right);
+		quickSort(arr, left, pivotIndex -1);
+		quickSort(arr, pivotIndex +1, right);
+	END IF
+	RETURN arr;
+
+3. For both merge sort and quick sort, the best and average case are O(n log n). For merge sort, the worst case is still O(n log n) while quick sort's worst case is O(n^2). Merge sort is best used for small or large data sets, while quick sort is best for smaller data sets. Both of these algorithms are considered more efficient then the other sorting algorithms because they both use a divide and conquer approach, meaning they work by recursively breaking down a problem into multiple sub-problems, until they are simple enough to be solved directly. As opposed to the other sorting algorithms which sort through the entire array without breaking it down first, merge sort and quick sort are sorting smaller pieces of data first, which allow them to complete the task more quickly. 
+
+
+4. With bucket sort, elements are put into individual buckets and then a sorting algorithm is applied to sort the elements in each bucket. The elements are then taken out of the buckets in order and are joined to gether to get the sorted result. Bucket sort works best when the input is evenly distributed over a range. 
