@@ -55,7 +55,7 @@ FUNCTION distanceBetweenNodes(n1, n2)
 END FUNCTION
 
 
-Answers to 1. and 2. in JS:
+Answers to 1 and 2 in JS:
 
 class Node {
     constructor(value) {
