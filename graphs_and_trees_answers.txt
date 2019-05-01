@@ -69,34 +69,6 @@ class BinarySearchTree {
     constructor() {
         this.root = null;
     }
-    insert(value) {
-        var newNode = new Node(value);
-        if (this.root === null) {
-            this.root === newNode;
-            return this;
-        } else { 
-            var current = this.root;
-            while (current) {
-                if (value === current.value) return undefined;
-                if (value < current.value) {
-                    if(!current.left) {
-                        current.left = newNode;
-                        return this;
-                    } else {
-                        current = current.left;
-                    }
-                } else if (value > current.value) {
-                    if (!current.right) {
-                        currrent.right = newNode;
-                        return this;
-                    } else {
-                        current = current.right;
-                    }
-                }
-            }
-        }
-
-    }
     contains(value) {
         if (this.root === null) {
             return false;
@@ -132,15 +104,19 @@ class BinarySearchTree {
     }
 }
 
+
+
 var tree = new BinarySearchTree();
 tree.root = new Node(10);
 tree.root.right = new Node(15);
 tree.root.left = new Node(7);
 tree.root.left.right = new Node(9);
+console.log(tree);
+console.log(tree.root);
+console.log(tree.root.right);
+console.log(tree.root.left);
+console.log(tree.root.left.right);
+console.log(tree.contains(9));
+console.log(tree.contains(45));
 
-
-
-				
-	
-
-	
+console.log(tree.distanceBetweenNodes(10, 15));
