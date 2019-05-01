@@ -8,18 +8,19 @@
 
 5.
 
-A list of pets and their unique names - object
+A list of pets and their unique names - hash table
 
-The name, age, and the birthday of your best friend - hash table
+The name, age, and the birthday of your best friend - object
 
-The name and location of every company in a given city - object
+The name and location of every company in a given city - hash table
 
 All of the books checked out from a library by a particular individual - hash table
 
-The primary and secondary phone numbers for a contact - hash table
+The primary and secondary phone numbers for a contact - object
 
 
-1. 
+Questions 1 - 3:
+
 
 class HashTable {
   constructor(size = 61) {
@@ -59,36 +60,25 @@ class Customer {
   }
 }
 
+let customer1 = new Customer('Kerry Jackson', '80 Webster', 7893456788);
 
-2.
 
-class HashTable {
-  constructor(size = 61) {
-    this.keyMap = new Array(size);
-  }
-  hash(key) {
-      let index = key % this.keyMap.length;
-      return index;
-  }
+let ht = new HashTable();
 
-  set(key, value) {
-    let index = this.hash(key);
-    if(!this.keyMap[index]) {
-      this.keyMap[index] = [];
-    }
-    this.keyMap[index].push([key, value]);
+ht.set(customer1.phone, customer1);
+
+console.log(customer1);
+console.log(ht.get(7893456788));
+console.log(ht.get(8572531121));
+
+function getStringCode(str) {
+  let total = 0;
+  let prime = 31;
+  for (let i = 0; i < Math.min(str.length, 100); i ++) {
+    let value = str.charCodeAt(i) - 96
+    total = (total * prime + value) % str.length;
   }
-  get(key) {
-    let index = this.hash(key);
-    if(!this.keyMap[index]) 
-      return undefined;
-    for(let i = 0; i < this.keyMap[index].length; i ++) {
-      if(this.keyMap[index][i][0] === key) {
-        return this.keyMap[index][i][1];
-      }  
-    }
-    return undefined;
-  }
+  return total;
 }
 
 class StoreItem {
@@ -97,60 +87,35 @@ class StoreItem {
     this.quantity = quantity;
   }
   getCode() {
-    let total = 0;
-    let prime = 31;
-    for (let i = 0; i < Math.min(this.item.length, 100); i ++) {
-      let value = this.item.charCodeAt(i) - 96
-      total = (total * prime + value) % this.item.length;
-    }
-    return total;
+    return getStringCode(this.item);
   }
 }
 
-3.
+let item1 = new StoreItem("Chinchilla", 2);
+let inventory = new HashTable();
+inventory.set(item1.getCode(), item1);
 
-class HashTable {
-  constructor(size = 61) {
-    this.keyMap = new Array(size);
-  }
-  hash(key) {
-      let index = key % this.keyMap.length;
-      return index;
-  }
+console.log(item1);
+console.log(inventory.get(getStringCode('Chinchilla')));
 
-  set(key, value) {
-    let index = this.hash(key);
-    if(!this.keyMap[index]) {
-      this.keyMap[index] = [];
-    }
-    this.keyMap[index].push([key, value]);
-  }
-  get(key) {
-    let index = this.hash(key);
-    if(!this.keyMap[index]) 
-      return undefined;
-    for(let i = 0; i < this.keyMap[index].length; i ++) {
-      if(this.keyMap[index][i][0] === key) {
-        return this.keyMap[index][i][1];
-      }  
-    }
-    return undefined;
-  }
-}
+
 
 class Publication {
   constructor(publisher, publicationDate) {
-    this.unhashedKey = publisher + publicationDate;
+    this.unhashedKey = publisher + " " + publicationDate;
     this.publisher = publisher;
     this.publicationDate = publicationDate;
   }
   getCode() {
-    let total = 0;
-    let prime = 31;
-    for (let i = 0; i < Math.min(this.unhashedKey.length, 100); i ++) {
-      let value = this.unhashedKey.charCodeAt(i) - 96
-      total = (total * prime + value) % this.unhashedKey.length;
-    }
-    return total;
+    return getStringCode(this.unhashedKey);
   }
 }
+
+let publication1 = new Publication ("America's Top 50 Beaches", 'January 10, 1985');
+
+let publication = new HashTable();
+
+publication.set(publication1.getCode(), publication1);
+
+console.log(publication1);
+console.log(publication.get(getStringCode("America's Top 50 Beaches January 10, 1985")));
